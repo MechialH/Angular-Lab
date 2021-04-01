@@ -1,0 +1,12 @@
+<h1>TODO List</h1>
+<h2>A place to store your todos</h2>
+<form>
+  <input type="text" placeholder="Filter your to-dos" />
+</form>
+
+<app-todo-item *ngFor="let task of tasks" [task]="task"></app-todo-item>
+
+<form>
+  <input type="text" placeholder="Add your to do" />
+  <button id="add">Add</button>
+</form>
