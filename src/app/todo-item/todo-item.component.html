@@ -1,5 +1,5 @@
 <p>
-  <button class="complete">Complete</button>
+  <button class="complete" *ngIf="!task.completed">Complete</button>
   {{ task.task }}
   <button class="remove">x</button>
 </p>
