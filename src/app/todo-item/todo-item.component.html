@@ -1,5 +1,4 @@
-<p>
+<div class="task">
   <button class="complete" *ngIf="!task.completed">Complete</button>
-  {{ task.task }}
-  <button class="remove">x</button>
-</p>
+  <div class="between">{{ task.task }} <button class="remove">x</button></div>
+</div>
