@@ -7,6 +7,9 @@ import {Todo} from "src/app/todo"
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
+  index: number | null = null
+  searchText: string| null = null
+  addedTodo: string| null =null
 tasks:Todo[]=[
   {completed: false,
   task: "practice angular"},
@@ -22,6 +25,15 @@ tasks:Todo[]=[
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onRemove(event:any){
+    this.tasks.splice(event.index,1)
+
+  }
+  addTask(){
+    this.tasks.push({completed: false, task: this.addedTodo})
+    this.searchText = null
   }
 
 }

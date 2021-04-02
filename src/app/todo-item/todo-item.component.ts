@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+
 import {Todo} from 'src/app/todo'
 
 @Component({
@@ -9,9 +10,17 @@ import {Todo} from 'src/app/todo'
 export class TodoItemComponent implements OnInit {
 
   @Input() task:Todo | null = null
+  @Output() removed = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
+  
+  removeTask(){
+    this.removed.emit(this.task)
+   }
 
+  completeTask(){
+    this.task.completed = true
+  }
 }
