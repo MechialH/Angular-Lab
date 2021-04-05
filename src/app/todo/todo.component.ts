@@ -28,7 +28,7 @@ tasks:Todo[]=[
   }
 
   onRemove(event:any){
-    this.tasks.splice(event.index,1)
+    this.tasks.splice(event,1)
 
   }
   addTask(){

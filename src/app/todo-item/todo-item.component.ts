@@ -9,6 +9,7 @@ import {Todo} from 'src/app/todo'
 })
 export class TodoItemComponent implements OnInit {
 
+  @Input() index:number = null
   @Input() task:Todo | null = null
   @Output() removed = new EventEmitter<any>();
   constructor() { }
@@ -17,7 +18,7 @@ export class TodoItemComponent implements OnInit {
   }
   
   removeTask(){
-    this.removed.emit(this.task)
+    this.removed.emit(this.index)
    }
 
   completeTask(){
