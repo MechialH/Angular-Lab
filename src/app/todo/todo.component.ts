@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from "src/app/todo"
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-todo',
@@ -10,30 +11,21 @@ export class TodoComponent implements OnInit {
   index: number | null = null
   searchText: string| null = null
   addedTodo: string| null =null
-tasks:Todo[]=[
-  {completed: false,
-  task: "practice angular"},
-  {completed: false,
-    task: 'research unity'},
-    {completed: true,
-      task: "check linkedIn"},
-      {completed: false,
-        task: "job search"},
-        {completed: true,
-          task: "reply to slack"}
-]
-  constructor() { }
+  tasks: Todo[] | null = null
+  
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
+    this.tasks = this.data.getTodos()
   }
 
   onRemove(event:any){
-    this.tasks.splice(event,1)
+    this.data.deleteTodo(event)
 
   }
   addTask(){
-    this.tasks.push({completed: false, task: this.addedTodo})
-    this.searchText = null
+    this.data.addTodo(this.addedTodo)
+    this.addedTodo = null
   }
 
 }
